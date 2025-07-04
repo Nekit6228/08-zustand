@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     url:'https://08-zustand-black.vercel.app/not-found',
     images:[{
       url:'https://img.freepik.com/free-vector/white-cross-mark-paint-style-red-background_78370-2969.jpg',
-      width:'1200',
-      height:'630',
+      width:1200,
+      height:630,
       alt:'404'
     }]
   }
