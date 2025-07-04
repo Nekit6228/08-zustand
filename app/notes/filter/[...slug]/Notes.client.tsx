@@ -5,12 +5,10 @@ import { useDebounce } from 'use-debounce';
 import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { fetchNotes } from '@/lib/api';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import NoteList from '@/components/NoteList/NoteList'; 
+import NoteList from '@/components/NoteList/NoteList';
 import Pagination from '@/components/Pagination/Pagination';
-import Modal from '@/components/Modal/Modal'; 
-import NoteForm from '@/components/NoteForm/NoteForm';
 import Loader from '@/app/loading';
-import Error from './error'; 
+import Error from './error';
 import css from './Notes.module.css';
 import type { Note } from '@/types/note';
 import type { Tag } from '@/types/note';
@@ -23,20 +21,18 @@ interface FetchNotesResponse {
 
 interface NotesClientProps {
   initialData: FetchNotesResponse;
-  initialTag: string; 
+  initialTag: string;
 }
 
 export default function NotesClient({ initialData, initialTag }: NotesClientProps) {
   const [inputValue, setInputValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [debouncedSearchTerm] = useDebounce(inputValue, 500);
 
   const currentTag = initialTag === 'All' ? undefined : (initialTag as Tag);
 
   useEffect(() => {
     setCurrentPage(1);
-    setInputValue('');
   }, [initialTag]);
 
   const notesQuery = useQuery<FetchNotesResponse, Error>({
@@ -48,7 +44,7 @@ export default function NotesClient({ initialData, initialTag }: NotesClientProp
 
   const handleSearch = (value: string) => {
     setInputValue(value);
-    setCurrentPage(1); 
+    setCurrentPage(1);
   };
 
   if (notesQuery.isLoading) {
@@ -82,17 +78,11 @@ export default function NotesClient({ initialData, initialTag }: NotesClientProp
           />
         )}
         <Link href="/notes/action/create" className="create-note-link">
-        Create note +
-      </Link>
+          Create note +
+        </Link>
       </header>
 
       <NoteList notes={notes} />
-
-      {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)}>
-          <NoteForm  />
-        </Modal>
-      )}
     </div>
   );
 }
