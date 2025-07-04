@@ -8,7 +8,7 @@ import { Metadata } from 'next';
 export const  metadata :Metadata ={
   title:'Notes',
   description:'Main Notes Page and Creating New Notes',
-  icons:'/notehub-og-meta.jpg',
+  icons:'/notehub-og-meta.webp',
   openGraph:{
     title:'Notes',
     description:'Main Notes Page and Creating New Notes',

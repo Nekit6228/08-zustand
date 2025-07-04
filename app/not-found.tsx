@@ -1,4 +1,22 @@
 import css from './not-found.module.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '404 Page Not Found',
+  description: '404 page — something went wrong',
+  icons:'/not-found.webp',
+  openGraph:{
+    title:'404 Page Not Found',
+    description:'404 page — something went wrong',
+    url:'https://08-zustand-3oef3aw2g-nekits-projects-d3079401.vercel.app/not-found',
+    images:[{
+      url:'https://img.freepik.com/free-vector/white-cross-mark-paint-style-red-background_78370-2969.jpg',
+      width:'1200',
+      height:'630',
+      alt:'404'
+    }]
+  }
+};
 
 export default function NotFound() {
   return (
