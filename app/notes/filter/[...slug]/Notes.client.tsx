@@ -14,6 +14,7 @@ import Error from './error';
 import css from './Notes.module.css';
 import type { Note } from '@/types/note';
 import type { Tag } from '@/types/note';
+import Link from 'next/link';
 
 interface FetchNotesResponse {
   notes: Note[];
@@ -80,16 +81,16 @@ export default function NotesClient({ initialData, initialTag }: NotesClientProp
             onPageChange={setCurrentPage}
           />
         )}
-        <button onClick={() => setIsModalOpen(true)} className={css.button}>
-          Create...
-        </button>
+        <Link href="/notes/action/create" className="create-note-link">
+        Create note +
+      </Link>
       </header>
 
       <NoteList notes={notes} />
 
       {isModalOpen && (
         <Modal onClose={() => setIsModalOpen(false)}>
-          <NoteForm onClose={() => setIsModalOpen(false)} />
+          <NoteForm  />
         </Modal>
       )}
     </div>

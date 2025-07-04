@@ -3,7 +3,7 @@ import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
 import { Metadata } from 'next';
-
+import { Roboto } from 'next/font/google';
 
 export const  metadata :Metadata ={
   title:'Notes',
@@ -23,6 +23,13 @@ export const  metadata :Metadata ={
   }
 }
 
+const roboto = Roboto({
+  weight: ['400', '700'],       
+  variable: '--font-roboto',   
+  display: 'swap',           
+  subsets: ['latin'],          
+})
+
 
 export default function RootLayout({
   children,
@@ -32,7 +39,7 @@ export default function RootLayout({
   modal: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en"  className={roboto.variable}>
       <body>
         <TanStackProvider>
           <Header />
